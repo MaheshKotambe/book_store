@@ -19,6 +19,24 @@ const BookList = () => {
         }
     }
 
+    const handleDelete = async (id) => {
+        if (window.confirm('Are you sure you want to delete this book')) {
+            try {
+                await axios.delete(`http://127.0.0.1:5000/api/books/${id}`);
+                alert('Book deleted successfully');
+                fetchBooks(); //refresh list
+            }
+            catch (err) {
+                console.log('error deleting book', err);
+                alert('error deleting book');
+            }
+        }
+    }
+
+    const handleUpdate = async (id) => {
+        
+    }
+
     return (
         <div className='container mt-5'>
             <h2 className='text-center mb-4'>Book List</h2>
@@ -29,16 +47,21 @@ const BookList = () => {
                         <th>Author</th>
                         <th>Year</th>
                         <th>Price</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     {books.length > 0 ? (
                         books.map((book) => (
-                            <tr>
+                            <tr key={book._id}>
                                 <td>{book.title}</td>
                                 <td>{book.author}</td>
                                 <td>{book.year}</td>
                                 <td>{book.price}</td>
+                                <td>
+                                    <a href='' className='btn btn-sm btn-warning me-2' onClick={() => handleUpdate(book._id)}><i className='fas fa-edit'></i></a>
+                                    <a href='' className='btn btn-sm btn-danger' onClick={() => handleDelete(book._id)}><i className='fas fa-trash'></i></a>
+                                </td>
                             </tr>
                         ))
                     ) : (
