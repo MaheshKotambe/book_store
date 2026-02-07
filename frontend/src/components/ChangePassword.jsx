@@ -63,7 +63,7 @@ const ChangePassword = () => {
                 <h2><i className='fas fa-key me-2'></i> Change Password</h2>
             </div>
 
-            <form className='p-4 rounded shadow mx-auto' onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+            <form className='border p-3 rounded bg-light mx-auto' onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
                 <div className='mb-3'>
                     <label className='form-label'>Old Password</label>
                     <input type='password' name='oldPassword' className='form-control' value={formData.oldPassword} onChange={handleChange} required placeholder='Enter your old password' />

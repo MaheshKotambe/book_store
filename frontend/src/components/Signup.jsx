@@ -36,7 +36,7 @@ const Signup = () => {
                 <h2><i className='fas fa-user-plus me-2'></i> Signup</h2>
             </div>
 
-            <form className='p-4 rounded shadow mx-auto' onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+            <form className='border p-3 rounded bg-light mx-auto' onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
                 <div className='mb-3'>
                     <label className='form-label'>Username</label>
                     <input type='text' name='name' className='form-control' value={formData.FullName} onChange={handleChange} required placeholder='Enter username' />

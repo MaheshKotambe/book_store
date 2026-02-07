@@ -38,7 +38,7 @@ const AddBook = ({onBookAdded})=>{
         <div className='container mt-5'>
             <h2 className='text-center mb-4'>Add New Book</h2>
             
-            <form className='border p-3 rounded bg-light mx-auto' onSubmit={handleSubmit} style={{maxWidth:'600px'}}>
+            <form className='border p-3 rounded bg-light mx-auto' onSubmit={handleSubmit} style={{maxWidth:'500px'}}>
 
                 <div className='mb-3'>
                     <label classname='form-label'>Title</label>

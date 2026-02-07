@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 const EditBook = () => {
 
     const { id } = useParams();
+    const userid = localStorage.getItem('id');
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ const EditBook = () => {
     });
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:5000/api/books/')
+        axios.get(`http://127.0.0.1:5000/api/books/${userid}`)
             .then(res => {
                 const book = res.data.find(b => b._id === id);
                 if (book) setFormData(book);
@@ -44,7 +45,7 @@ const EditBook = () => {
         <div className='container mt-5'>
             <h2 className='text-center mb-4'>Update Book</h2>
 
-            <form className='border p-3 rounded bg-light' onSubmit={handleSubmit}>
+            <form className='border p-3 rounded bg-light mx-auto' onSubmit={handleSubmit} style={{maxWidth:'500px'}}>
 
                 <div className='mb-3'>
                     <label classname='form-label'>Title</label>
