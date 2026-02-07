@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const AddBook = ()=>{
+const EditBook = ()=>{
 
     const [formData, setFormData] = useState({
         title:'',
@@ -40,7 +40,7 @@ const AddBook = ()=>{
                 
                 <div className='mb-3'>
                     <label classname='form-label'>Author</label>
-                    <input type='text' onChange={handleChange} value={formData.author} className='form-control' name='author' placeholder='Enter author name' required/>
+                    <input type='text' onChange={handleChange} value={formData.author} className='form-control' name='author' placeholder='Enter author name'/>
                 </div>
                 
                 <div className='mb-3'>
@@ -60,4 +60,4 @@ const AddBook = ()=>{
     )
 }
 
-export default AddBook;
+export default EditBook;
