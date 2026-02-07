@@ -3,10 +3,11 @@ import React, {useState} from 'react';
 import BookList from './components/BookList';
 import AddBook from './components/AddBook';
 import EditBook from './components/EditBook';
-import Navbar from './components/Navbar';
+import MyNavbar from './components/MyNavbar';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import Home from './components/Home';
+import ChangePassword from './components/ChangePassword';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar/>
+        <MyNavbar/>
         <Routes>
           <Route path='/edit/:id' element={<EditBook />}></Route>
           <Route path='/' element={<Home/>}></Route>
@@ -30,6 +31,7 @@ function App() {
               <BookList key={refresh} />
             </>
           }></Route> */}
+          <Route path='/change-password' element={<ChangePassword/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
         </Routes>
