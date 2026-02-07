@@ -3,6 +3,10 @@ import React, {useState} from 'react';
 import BookList from './components/BookList';
 import AddBook from './components/AddBook';
 import EditBook from './components/EditBook';
+import Navbar from './components/Navbar';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import Home from './components/Home';
 
 function App() {
 
@@ -15,14 +19,19 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar/>
         <Routes>
           <Route path='/edit/:id' element={<EditBook />}></Route>
-          <Route path='/' element={
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='/add-book' element={<AddBook/>}></Route>
+          {/* <Route path='/' element={
             <>
               <AddBook onBookAdded={handleBookAdded} />
               <BookList key={refresh} />
             </>
-          }></Route>
+          }></Route> */}
+          <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const BookList = () => {
 
+    const navigate = useNavigate();
+    const userid = localStorage.getItem('id');
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        fetchBooks();
+        // if(!userid){
+        //     navigate('/login');
+        // }
+        fetchBooks(userid);
     }, []);
 
-    const fetchBooks = async () => {
+    const fetchBooks = async (userid) => {
         try {
-            const res = await axios.get('http://127.0.0.1:5000/api/books/');
+            const res = await axios.get(`http://127.0.0.1:5000/api/books/${userid}`);
             setBooks(res.data);
         }
         catch (err) {

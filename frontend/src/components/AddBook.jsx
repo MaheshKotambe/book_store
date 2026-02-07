@@ -1,8 +1,11 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 const AddBook = ({onBookAdded})=>{
 
+    const navigate = useNavigate();
+    
     const [formData, setFormData] = useState({
         title:'',
         author:'',
@@ -16,11 +19,14 @@ const AddBook = ({onBookAdded})=>{
 
     const handleSubmit = async (e)=>{
         e.preventDefault();
+        const userid = localStorage.getItem('id');
+
         try{
-            await axios.post('http://127.0.0.1:5000/api/books/', formData);
+            await axios.post(`http://127.0.0.1:5000/api/books/${userid}`, formData);
             alert('book added successfully');
             setFormData({title:'', author:'', year:'', price:''});
             if(onBookAdded) onBookAdded();
+            navigate('/');
         }
         catch(err){
             console.error('Error adding book', err);
@@ -32,7 +38,7 @@ const AddBook = ({onBookAdded})=>{
         <div className='container mt-5'>
             <h2 className='text-center mb-4'>Add New Book</h2>
             
-            <form className='border p-3 rounded bg-light' onSubmit={handleSubmit}>
+            <form className='border p-3 rounded bg-light mx-auto' onSubmit={handleSubmit} style={{maxWidth:'600px'}}>
 
                 <div className='mb-3'>
                     <label classname='form-label'>Title</label>

@@ -7,7 +7,12 @@ const bookSchema = new mongoose.Schema({
     },
     author: String,
     year: Number,
-    price: Number
+    price: Number,
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 });
 
 module.exports = mongoose.model('Book',bookSchema);

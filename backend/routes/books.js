@@ -6,21 +6,30 @@ const Book = require('../models/Book');
 //CRUD api routes
 
 //create new book
-router.post('/', async(req,res) => {
-    try{
-        const book = new Book(req.body);
+router.post('/:id', async (req, res) => {
+    try {
+        const bookData = req.body;
+
+        const book = new Book({
+            ...bookData,
+            owner: req.params.id 
+        });
+
         await book.save();
         res.status(201).json(book);
-    }
-    catch(err){
-        res.status(400).json({error: err.message});
+
+    } catch (err) {
+        res.status(400).json({ error: err.message });
     }
 });
 
 //fetch all books
-router.get('/', async(req,res) => {
+router.get('/:id', async(req,res) => {
     try{
-        const books = await Book.find();
+        const books = await Book.find({ owner: req.params.id });
+        if (!books) {
+            return res.status(404).json({ message: 'books not found'});
+        }
         res.json(books);
     }
     catch(err){

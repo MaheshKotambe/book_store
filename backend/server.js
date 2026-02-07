@@ -11,6 +11,9 @@ app.use(express.json());
 const bookRoutes = require('./routes/books');
 app.use('/api/books/',bookRoutes);
 
+const userRoutes = require('./routes/users');
+app.use('/api/user/',userRoutes);
+
 //db connection
 mongoose.connect('mongodb://127.0.0.1:27017/booksdb',{
 
