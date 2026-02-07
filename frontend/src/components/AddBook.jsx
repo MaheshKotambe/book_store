@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const AddBook = ()=>{
+const AddBook = ({onBookAdded})=>{
 
     const [formData, setFormData] = useState({
         title:'',
@@ -20,6 +20,7 @@ const AddBook = ()=>{
             await axios.post('http://127.0.0.1:5000/api/books/', formData);
             alert('book added successfully');
             setFormData({title:'', author:'', year:'', price:''});
+            if(onBookAdded) onBookAdded();
         }
         catch(err){
             console.error('Error adding book', err);

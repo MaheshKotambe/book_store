@@ -33,10 +33,6 @@ const BookList = () => {
         }
     }
 
-    const handleUpdate = async (id) => {
-        
-    }
-
     return (
         <div className='container mt-5'>
             <h2 className='text-center mb-4'>Book List</h2>
@@ -59,7 +55,7 @@ const BookList = () => {
                                 <td>{book.year}</td>
                                 <td>{book.price}</td>
                                 <td>
-                                    <a href='' className='btn btn-sm btn-warning me-2' onClick={() => handleUpdate(book._id)}><i className='fas fa-edit'></i></a>
+                                    <a href={`/edit/${book._id}`} className='btn btn-sm btn-warning me-2'><i className='fas fa-edit'></i></a>
                                     <a href='' className='btn btn-sm btn-danger' onClick={() => handleDelete(book._id)}><i className='fas fa-trash'></i></a>
                                 </td>
                             </tr>
