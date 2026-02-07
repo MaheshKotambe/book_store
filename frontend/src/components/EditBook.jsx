@@ -30,13 +30,13 @@ const EditBook = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://127.0.0.1:5000/api/books/', formData);
-            alert('book added successfully');
-            setFormData({ title: '', author: '', year: '', price: '' });
+            await axios.put(`http://127.0.0.1:5000/api/books/${id}`, formData);
+            alert('book updated successfully');
+            navigate('/');
         }
         catch (err) {
-            console.error('Error adding book', err);
-            alert('error adding book');
+            console.error('Error updating book', err);
+            alert('error updating book');
         }
     }
 
@@ -66,7 +66,7 @@ const EditBook = () => {
                     <input type='number' onChange={handleChange} value={formData.price} className='form-control' name='price' placeholder='Enter book price in rupees only' />
                 </div>
 
-                <button type='submit' className='btn btn-primary w-100'><i className='fas fa-plus-circle me-2'></i>Update Book</button>
+                <button type='submit' className='btn btn-primary w-100'><i className='fas fa-sync me-2'></i>Update Book</button>
 
             </form>
         </div>
